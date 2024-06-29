@@ -91,5 +91,8 @@ class PrivateIngredientsApiTests(TestCase):
         res = self.client.delete(url)
 
         self.assertEqual(res.status_code, status.HTTP_204_NO_CONTENT)
-        exists = Ingredient.objects.filter(user=self.user, name=ingredient.name).exists()
+        exists = Ingredient.objects.filter(
+            user=self.user,
+            name=ingredient.name
+        ).exists()
         self.assertFalse(exists)
