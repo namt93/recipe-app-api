@@ -21,10 +21,13 @@ RUN python -m venv /py && \
     fi && \
     rm -rf /tmp && \
     apk del .tmp-build-deps && \
-    adduser \
-        --disabled-password \
-        --no-create-home \
-        django-user
+    # adduser \
+    #     --disabled-password \
+    #     --no-create-home \
+    #     django-user         #  Don't use django-user, use root instead
+    mkdir -p /vol/web/media && \
+    mkdir -p /vol/web/static && \
+    chmod -R 755 /vol
 
 ENV PATH="/py/bin:$PATH"
 
